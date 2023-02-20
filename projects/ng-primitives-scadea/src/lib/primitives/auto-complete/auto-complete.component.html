@@ -1,0 +1,12 @@
+<div class="field">
+    <label *ngIf="label" class="block">{{ label }}
+        <span class="label-required" *ngIf="required">*</span>
+    </label>
+    <p-autoComplete [suggestions]="filteredValues" label="label" [formControl]="control" [required]="required"
+        [field]="field" [placeholder]="placeholder" (completeMethod)="search($event)"
+        [showEmptyMessage]="showEmptyMessage" [emptyMessage]="emptyMessage" (onSelect)="onChangeEvent($event)">
+        <ng-content></ng-content>
+</p-autoComplete>
+    <small class="block text-danger"
+        *ngIf="control.touched && required && control?.errors?.['required']">{{requiredValidationError}}</small>
+</div>

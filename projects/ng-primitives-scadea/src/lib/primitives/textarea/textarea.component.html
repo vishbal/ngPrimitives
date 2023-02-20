@@ -1,0 +1,19 @@
+<div class="field">
+    <label *ngIf="label" class="block"
+        >{{ label }} <span class="label-required" *ngIf="required">*</span></label
+    >
+    <textarea
+        [rows]="rows"
+        [cols]="cols"
+        class="w-100"
+        [ngClass]="{ 'ng-dirty ng-invalid': control.invalid && control.touched }"
+        pInputTextarea
+        [formControl]="control"
+        [placeholder]="placeholder"
+        [autoResize]="autoResize"
+    >
+    </textarea>
+    <ng-container *ngIf="control.touched">
+        <ng-content select="[errorMessages]"></ng-content>
+    </ng-container>
+</div>

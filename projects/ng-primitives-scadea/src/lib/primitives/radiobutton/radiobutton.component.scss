@@ -1,0 +1,15 @@
+.radiobutton-container {
+    display: block;
+}
+
+.field-radiobutton {
+    &.horizontal {
+        display: inline-block;
+        margin-right: 15px;
+    }
+
+    label {
+        margin-bottom: 0;
+        margin-left: 5px;
+    }
+}

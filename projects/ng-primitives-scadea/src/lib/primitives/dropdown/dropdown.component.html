@@ -1,0 +1,30 @@
+<div class="field" *ngIf="group; else withoutGroup" [class.hide]="hidden">
+    <label *ngIf="label" class="block">{{ label }} <span class="label-required" *ngIf="required">*</span></label>
+    <p-dropdown [options]="options" [formControl]="control" [optionLabel]="optionLabel" [optionValue]="optionValue"
+        [placeholder]="placeholder" [showClear]="showClear" [group]="group" [disabled]="disabled"
+        [filter]="filter" 
+        (onChange)="onChangeEvent($event)">
+        <ng-content></ng-content>
+    </p-dropdown>
+</div>
+
+<ng-template #withoutGroup>
+    <div class="field" [class.hide]="hidden">
+        <label *ngIf="label" class="block">{{ label }} <span class="label-required" *ngIf="required">*</span></label>
+        <p-dropdown [options]="options" [formControl]="control" [placeholder]="placeholder" 
+        [optionLabel]="optionLabel"
+            [optionValue]="optionValue" 
+            [showClear]="showClear"  
+            [disabled]="disabled" 
+            [filter]="filter"
+            (onChange)="onChangeEvent($event)">
+            <ng-content></ng-content>
+            <ng-template let-option pTemplate="item" *ngIf="showItemIcon">
+                <div class="country-item">
+                    <img [src]="option.flags.png" style="height: 20px;padding-right: 10px;"/>
+                    <span>{{ option.name.common }}</span>
+                </div>
+            </ng-template>
+        </p-dropdown>
+    </div>
+</ng-template>

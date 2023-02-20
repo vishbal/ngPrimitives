@@ -1,0 +1,13 @@
+<div class="field-checkbox" *ngIf="!data; else checkboxLoop">
+    <p-checkbox [name]="name" [value]="value" [formControl]="control"></p-checkbox>
+    <label>{{ label }}</label>
+</div>
+
+<ng-template #checkboxLoop>
+    <div class="checkbox-container" [class]="containerClass">
+        <div class="field-checkbox" *ngFor="let item of data" [class.horizontal]="direction === 'horizontal'">
+            <p-checkbox [name]="name" [value]="item.value" [formControl]="control" [class]="checkboxClass"></p-checkbox>
+            <label>{{ item.label }}</label>
+        </div>
+    </div>
+</ng-template>

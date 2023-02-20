@@ -1,0 +1,12 @@
+.p-inputtextarea {
+    min-height: 100px;
+}
+
+.p-inputtext.ng-dirty.ng-invalid {
+    border-color: #B00020!important;
+}
+
+.p-inputtext:enabled:focus.ng-invalid.ng-dirty {
+    border: 1px solid transparent!important;
+    box-shadow: inset 0 0 0 1px #b00020, inset 0 0 0 1px #b00020, inset 0 0 0 1px #b00020, inset 0 0 0 1px #b00020!important;
+}

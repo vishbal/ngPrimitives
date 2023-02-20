@@ -1,0 +1,88 @@
+<p-table #dt1 [value]="data" [(selection)]="selectedItems" sortMode="multiple" [paginator]="paginator" [rows]="rows" [globalFilterFields]="globalFilterOptions" [selectionMode]="selectionMode" (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnSelect($event)">
+    <ng-container *ngIf="globalFilterOptions.length > 0">
+        <ng-template pTemplate="caption">
+            <div class="d-flex">
+                <span class="p-input-icon-left ms-auto">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="handleGlobalFilter($event)" placeholder="Search keyword" />
+                </span>
+            </div>
+        </ng-template>
+    </ng-container>
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="width: 4rem" *ngIf="enableCheckboxSelection">
+                <p-tableHeaderCheckbox (click)="onHeaderCheckboxClicked($event)"></p-tableHeaderCheckbox>
+            </th>
+            <ng-container *ngFor="let col of headerColumns">
+                <th *ngIf="!col.sortable; else sortableHeadCell">
+                    {{ col.title }}
+                </th>
+                <ng-template #sortableHeadCell>
+                    <th [pSortableColumn]="col.field">
+                        {{ col.title }} 
+                        <p-sortIcon [field]="col.field"></p-sortIcon>
+                    </th>
+                </ng-template>
+            </ng-container>
+            <th *ngIf="actions"></th>
+        </tr>
+        <tr *ngIf="filtersRow">
+            <th *ngIf="enableCheckboxSelection"></th>
+            <th *ngFor="let col of headerColumns">
+                <ng-container *ngIf="col.filter" [ngSwitch]="col.filter.type">
+                    <p-columnFilter *ngSwitchCase="'text'" type="text" [field]="col.field" matchMode="contains"></p-columnFilter>
+                    <p-columnFilter *ngSwitchCase="'multiselect'" [field]="col.field" [matchMode]="col.filter.matchMode" [showMenu]="false">
+                        <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+                            <p-multiSelect [ngModel]="value" [options]="col.filter.data" placeholder="Any" (onChange)="filter($event.value)" optionLabel="name" optionValue="value">
+                                <ng-template let-option pTemplate="item">
+                                    <div class="p-multiselect-representative-option">
+                                        <span class="ml-1">{{option.name}}</span>
+                                    </div>
+                                </ng-template>
+                            </p-multiSelect>
+                        </ng-template>
+                    </p-columnFilter>
+                    <p-columnFilter *ngSwitchCase="'dropdown'" [field]="col.field" [matchMode]="col.filter.matchMode" [showMenu]="false">
+                        <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+                            <p-dropdown [ngModel]="value" [options]="col.filter.data" (onChange)="filter($event.value)" placeholder="Any" [showClear]="true" optionLabel="name" optionValue="value">
+                                <ng-template let-option pTemplate="item">
+                                    <span [class]="'customer-badge status-' + option.value">{{option.name}}</span>
+                                </ng-template>
+                            </p-dropdown>
+                        </ng-template>
+                    </p-columnFilter>
+                    <p-columnFilter *ngSwitchCase="'boolean'" type="boolean" [field]="col.field"></p-columnFilter>
+                </ng-container>
+            </th>
+            <th *ngIf="actions"></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-item let-rowIndex="rowIndex">
+        <tr [pSelectableRow]="item" [pSelectableRowIndex]="rowIndex" *ngIf="(selectionMode === 'single' || selectionMode === 'multiple'); else withoutRowSelection" (click)="onRowClick()">
+            <ng-container *ngFor="let cell of headerColumns">
+                <td>{{ item[cell.field] | dynamicPipe: cell.pipe ?? '' }}</td>
+            </ng-container>
+            <td *ngIf="actions" style="width: 10rem">
+                <button  pButton pRipple icon="pi pi-eye" class="hb-action-icon hb-view-action" (click)="onActionClick('VIEW', item)"></button>
+                <button  pButton pRipple icon="pi pi-file-edit" class="hb-action-icon" (click)="onActionClick('EDIT', item)"></button>
+                <button  pButton pRipple icon="pi pi-trash" class="hb-action-icon hb-danger-action" (click)="onActionClick('DELETE', item)"></button>
+            </td>
+        </tr>
+        <ng-template #withoutRowSelection>
+            <tr>
+                <td *ngIf="enableCheckboxSelection">
+                    <p-tableCheckbox [value]="item"></p-tableCheckbox>
+                </td>
+                <ng-container *ngFor="let cell of headerColumns">
+                    <td>{{ item[cell.field] | dynamicPipe: cell.pipe ?? '' }}</td>
+                </ng-container>
+                <td *ngIf="actions">
+                    <button  pButton pRipple icon="pi pi-eye" class="hb-action-icon hb-view-action" (click)="onActionClick('VIEW', item)"></button>
+                    <button  pButton pRipple icon="pi pi-file-edit" class="hb-action-icon" (click)="onActionClick('EDIT', item)"></button>
+                    <button  pButton pRipple icon="pi pi-trash" class="hb-action-icon hb-danger-action" (click)="onActionClick('DELETE', item)"></button>
+                </td>
+            </tr>
+        </ng-template>
+    </ng-template>
+</p-table>

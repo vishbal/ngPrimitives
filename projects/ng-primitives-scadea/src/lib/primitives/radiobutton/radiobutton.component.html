@@ -1,0 +1,13 @@
+<div class="field-radiobutton" *ngIf="!radioData; else radioLoop">
+    <p-radioButton [name]="name" [value]="value" [formControl]="control"></p-radioButton>
+    <label>{{ label }}</label>
+</div>
+
+<ng-template #radioLoop>
+    <div class="radiobutton-container" [class]="containerClass">
+        <div class="field-radiobutton" *ngFor="let item of radioData" [class.horizontal]="direction === 'horizontal'">
+            <p-radioButton [name]="name" [value]="item.value" [formControl]="control" [class]="radioClass"></p-radioButton>
+            <label>{{ item.label }}</label>
+        </div>
+    </div>
+</ng-template>

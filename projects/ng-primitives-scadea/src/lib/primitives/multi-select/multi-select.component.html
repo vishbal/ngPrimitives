@@ -1,0 +1,13 @@
+<div class="field"  *ngIf="group; else withoutGroup" [class.hide]="hidden">
+    <label *ngIf="label" class="block">{{ label }} <span class="label-required" *ngIf="required">*</span></label>
+    <p-multiSelect [options]="options" [formControl]="control" [optionLabel]="optionLabel" [defaultLabel]="defaultLabel" [optionValue]="optionValue" [placeholder]="placeholder" [group]="group" [disabled]="disabled" (onChange)="onChangeEvent($event)">
+        <ng-content></ng-content>
+    </p-multiSelect>
+</div>
+
+<ng-template #withoutGroup>
+    <div class="field" [class.hide]="hidden">
+        <label *ngIf="label" class="block">{{ label }} <span class="label-required" *ngIf="required">*</span></label>
+        <p-multiSelect [options]="options" [formControl]="control" [placeholder]="placeholder" [optionLabel]="optionLabel" [defaultLabel]="defaultLabel" [optionValue]="optionValue" [disabled]="disabled" (onChange)="onChangeEvent($event)"></p-multiSelect>
+    </div>
+</ng-template>
