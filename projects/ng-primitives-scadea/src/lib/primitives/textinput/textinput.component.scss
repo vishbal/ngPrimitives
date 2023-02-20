@@ -1,0 +1,32 @@
+.tC{
+    font-size: 15px !important;
+    font-family: 'inter',sans-serif;
+}
+.p-button:disabled {
+    background-color: rgb(224 224 224) !important;
+    color: rgba(0, 0, 0, 0.38) !important;
+    opacity: 1 !important;
+    cursor: no-drop;
+}
+.field {
+    margin-bottom: 20px;
+    label {
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--gray);
+        .label-required {
+            font-weight: 500;
+            color: red;
+        }
+    }
+    .p-inputtext {
+        border-radius: 0;
+    }
+}
+.block {
+    display: block;
+}
+.p-inputgroup-addon{
+    color: var(--blue);
+    background: #effff0;
+}
