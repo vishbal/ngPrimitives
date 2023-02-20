@@ -1,0 +1,31 @@
+<div class="field">
+    <label *ngIf="label" class="block">{{ label }} <span class="label-required" *ngIf="required">*</span></label>
+    <div class="p-inputgroup" *ngIf="inputGroup; else normalField">
+        <ng-content select="[leftIcon]"></ng-content>
+        <input
+            [type]="isPassword ? 'password' : 'text'"
+            class="w-100"
+            [ngClass]="{ 'ng-dirty ng-invalid': control.invalid && control.touched }"
+            pInputText
+            [formControl]="control"
+            [placeholder]="placeholder"
+            (blur)="handleBlur($event)"
+            (change)="handleChange($event)"
+        />
+        <ng-content select="[rightIcon]"></ng-content>
+    </div>
+    <ng-template #normalField>
+        <input
+            [type]="isPassword ? 'password' : 'text'"
+            class="w-100"
+            [ngClass]="{ 'ng-dirty ng-invalid': control.invalid && control.touched }"
+            pInputText
+            [formControl]="control"
+            [placeholder]="placeholder"
+            (change)="handleChange($event)"
+        />
+    </ng-template>
+    <ng-container *ngIf="control.touched">
+        <ng-content select="[errorMessages]"></ng-content>
+    </ng-container>
+</div>
