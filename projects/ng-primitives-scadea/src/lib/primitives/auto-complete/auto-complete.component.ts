@@ -4,7 +4,7 @@ import { FormControl } from '@angular/forms';
 @Component({
   selector: 'hb-auto-complete',
   templateUrl: './auto-complete.component.html',
-  styleUrls: ['../styles.scss']
+  styleUrls: ['../../common/styles.scss']
 })
 export class AutoCompleteComponent  {
   @Input() control: FormControl = new FormControl();

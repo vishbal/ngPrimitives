@@ -4,7 +4,7 @@ import { FormControl } from '@angular/forms';
 @Component({
   selector: 'hb-textarea',
   templateUrl: './textarea.component.html',
-  styleUrls: ['./textarea.component.scss', '../styles.scss']
+  styleUrls: ['./textarea.component.scss', '../../common/styles.scss']
 })
 export class TextareaComponent {
   @Input() control: FormControl = new FormControl();

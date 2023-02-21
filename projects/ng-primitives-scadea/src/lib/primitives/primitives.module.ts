@@ -11,7 +11,7 @@ import { GridComponent } from './grid/grid.component';
 import { MultiSelectComponent } from './multi-select/multi-select.component';
 import { RadiobuttonComponent } from './radiobutton/radiobutton.component';
 import { TextareaComponent } from './textarea/textarea.component';
-import { DynamicPipePipe } from './dynamic-pipe.pipe';
+import { DynamicPipePipe } from '../common/dynamic-pipe.pipe';
 
 
 

@@ -1,11 +1,10 @@
 {
   "name": "ng-primitives-scadea",
-  "version": "0.0.3",
+  "version": "0.0.7",
   "peerDependencies": {
     "@angular/common": "^15.0.0",
     "@angular/core": "^15.0.0",
-    "primeng": "^15.2.0"
-  },"devDependencies": {
+    "primeng": "^15.2.0",
     "primeicons": "6.0.1"
   },
   "dependencies": {

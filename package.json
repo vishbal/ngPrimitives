@@ -1,13 +1,15 @@
 {
   "name": "ng-primitives",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "author": "Balaji Vishnubhotla",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "build:scss": "scss-bundle -p scss-bundle.config.json",
+    "build:library": "ng build ng-primitives-scadea && npm run build:scss"
   },
   "private": true,
   "dependencies": {
@@ -23,6 +25,7 @@
     "primeicons": "^6.0.1",
     "primeng": "^15.2.0",
     "rxjs": "~7.5.0",
+    "scss-bundle": "^3.1.2",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
   },

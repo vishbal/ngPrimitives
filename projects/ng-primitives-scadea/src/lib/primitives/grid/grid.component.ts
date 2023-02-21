@@ -5,7 +5,7 @@ import { Table } from 'primeng/table';
 @Component({
   selector: 'hb-grid',
   templateUrl: './grid.component.html',
-  styleUrls: ['./grid.component.scss', '../styles.scss'],
+  styleUrls: ['./grid.component.scss', '../../common/styles.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class GridComponent {

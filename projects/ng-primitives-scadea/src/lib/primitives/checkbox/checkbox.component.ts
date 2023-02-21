@@ -4,7 +4,7 @@ import { FormControl } from '@angular/forms';
 @Component({
   selector: 'hb-checkbox',
   templateUrl: './checkbox.component.html',
-  styleUrls: ['./checkbox.component.scss', '../styles.scss']
+  styleUrls: ['./checkbox.component.scss', '../../common/styles.scss']
 })
 export class CheckboxComponent {
   @Input() control: FormControl = new FormControl();

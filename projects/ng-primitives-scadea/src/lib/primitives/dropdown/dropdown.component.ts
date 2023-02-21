@@ -4,7 +4,7 @@ import { FormControl } from '@angular/forms';
 @Component({
   selector: 'hb-dropdown',
   templateUrl: './dropdown.component.html',
-  styleUrls: ['./dropdown.component.scss', '../styles.scss']
+  styleUrls: ['./dropdown.component.scss', '../../common/styles.scss']
 })
 export class DropdownComponent {
   @Input() control: FormControl = new FormControl();

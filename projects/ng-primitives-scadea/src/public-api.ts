@@ -11,6 +11,6 @@ export * from './lib/primitives/grid/grid.component';
 export * from './lib/primitives/multi-select/multi-select.component';
 export * from './lib/primitives/radiobutton/radiobutton.component';
 export * from './lib/primitives/textarea/textarea.component';
-export * from './lib/primitives/dynamic-pipe.pipe';
+export * from './lib/common/dynamic-pipe.pipe';
 export * from './lib/primitives/primitives.module';
 export * from './lib/primitives/primeng.module';

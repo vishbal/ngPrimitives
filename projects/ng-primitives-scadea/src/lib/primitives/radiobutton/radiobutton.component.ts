@@ -4,7 +4,7 @@ import { FormControl } from '@angular/forms';
 @Component({
   selector: 'hb-radiobutton',
   templateUrl: './radiobutton.component.html',
-  styleUrls: ['./radiobutton.component.scss', '../styles.scss']
+  styleUrls: ['./radiobutton.component.scss', '../../common/styles.scss']
 })
 export class RadiobuttonComponent {
   @Input() control: FormControl = new FormControl();

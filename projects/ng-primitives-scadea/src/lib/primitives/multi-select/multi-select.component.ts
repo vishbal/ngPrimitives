@@ -4,7 +4,7 @@ import { FormControl } from '@angular/forms';
 @Component({
   selector: 'hb-multi-select',
   templateUrl: './multi-select.component.html',
-  styleUrls: ['./multi-select.component.scss', '../styles.scss']
+  styleUrls: ['./multi-select.component.scss', '../../common/styles.scss']
 })
 export class MultiSelectComponent {
   @Input() control: FormControl = new FormControl();

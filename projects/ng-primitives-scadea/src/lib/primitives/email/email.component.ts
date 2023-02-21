@@ -4,7 +4,7 @@ import { FormControl } from '@angular/forms';
 @Component({
   selector: 'hb-email',
   templateUrl: './email.component.html',
-  styleUrls: ['../styles.scss']
+  styleUrls: ['../../common/styles.scss']
 })
 export class EmailComponent {
   @Input() control: FormControl = new FormControl();
